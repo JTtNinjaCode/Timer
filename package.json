@@ -1,0 +1,48 @@
+{
+  "name": "time",
+  "version": "1.0.0",
+  "description": "一個簡單的計時器",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "time",
+    "productName": "計時器",
+    "directories": {
+      "output": "pack"
+    },
+    "files": [
+      "**/*",
+      "!.vscode",
+      "build/"
+    ],
+    "asar": false,
+    "win": {
+      "icon": "www/img/icon.png"
+    },
+    "mac": {
+      "icon": "www/img/icon.png"
+    },
+    "linux": {
+      "icon": "www/img/icon.png"
+    }
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "聖冰如焰",
+  "license": "CC BY-NC-SA 3.0 TW",
+  "devDependencies": {
+    "electron": "^8.5.2",
+    "electron-builder": "^22.6.1"
+  },
+  "dependencies": {}
+}

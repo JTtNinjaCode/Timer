@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- 取得jQuery -->
+  <script src="jquery-3.5.1.min.js"></script>
+  <!-- 取得jQuery UI-->
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+  <!-- 取得jQuery UI-->
+  <script src="jquery-ui/jquery-ui.min.js"></script>
+  <!-- 引入自定義的CSS-->
+  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Timer</title>
+</head>
+
+<body>
+  <!-- 背景區塊 -->
+  <div id="background">
+    <!-- 主區塊 -->
+    <div id="main">
+      <!--總時間 -->
+      <div id="big">
+        <!-- 時、分、秒 -->
+        <span id="big_hour_min_sec">00:00:00</span>
+        <!-- 毫秒 -->
+        <span id="big_ms">.000</span>
+      </div>
+      <!-- 段落時間 -->
+      <div id="small">
+        <!-- 時、分、秒 -->
+        <span id="small_hour_min_sec">00:00:00</span>
+        <!-- 毫秒 -->
+        <span id="small_ms">.000</span>
+        <hr>
+      </div>
+      <!-- 按鈕區塊 -->
+      <div>
+        <button id="start">Start</button>
+        <button id="split">Split</button>
+        <button id="reset">Reset</button>
+      </div>
+      <!-- 表格區塊 -->
+      <div>
+        <div class="set_result" id="split_place">
+          <div id="title">
+            <div>Interval</div>
+            <div>Interval Time</div>
+            <div>Total Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./function.js"></script> <!-- function -->
+  <script src="./renderer.js"></script> <!-- 渲染器 -->
+  <script src="./object.js"></script> <!-- 物件觸發 -->
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+*::-webkit-scrollbar {
+    /* 使用者無法看到拉條 */
+    display: none
+}
+
+* {
+    /* 讓使用者無法選取文字 */
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+/* 載入字體 */
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url("Montserrat-Light.ttf");
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    /* 字的顏色 */
+    color: #E4E6EB;
+    /* 字體 */
+    font-family: 'Montserrat-Light';
+}
+
+#background {
+    position: relative;
+    /* 邊框也算在height width內 */
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("img/background.jpg");
+    background-size: cover;
+    /* 溢出的隱藏 */
+    overflow: hidden;
+}
+
+hr {
+    width: 800px;
+}
+
+#main {
+    /* 邊框也算在height width內 */
+    box-sizing: border-box;
+    position: relative;
+    /* 使用網格布局 */
+    display: grid;
+    /* 可以額外新增攔列之間的Gap
+    grid-column-gap:50px
+    grid-row-gap:50px
+    grid-gap:50px
+
+    如果要變換某元素，使它能跨多Columns可使用
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    同樣的，如果要它跨多Row也可使用
+    grid-row-start: 1;
+    grid-row-end: 3;
+    */
+
+    /* 列網格 */
+    grid-template-rows: 80px auto auto auto auto;
+    grid-row-gap: 25px;
+    /* 上下左右皆置中 */
+    align-items: center;
+    text-align: center;
+    /* 外邊界上下左右皆20 */
+    margin: 100px;
+}
+
+/* 大字體的時分秒 */
+#big_hour_min_sec {
+    position: relative;
+    font-size: 160px;
+}
+
+/* 大字體的毫秒 */
+#big_ms {
+    position: relative;
+    font-size: 60px;
+}
+
+/* 小字體的區塊 */
+#small {
+    margin-top: 20px;
+}
+
+/* 小字體的時分秒 */
+#small_hour_min_sec {
+    font-size: 90px;
+}
+
+/* 小字體的毫秒 */
+#small_ms {
+    font-size: 40px;
+}
+
+/* 三個按鈕的間距 */
+#split,
+#start,
+#reset {
+    margin: 0 30px
+}
+
+/* 下表格的title */
+#title {
+    /* 使用表格配置 */
+    display: grid;
+    /* 設置三攔的寬度*/
+    grid-template-columns: 30% 40% 30%;
+    font-size: 30px;
+}
+
+/* 漸變出現 */
+@keyframes show {
+    0% {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* 下表格的元素 */
+.list {
+    /* 邊線也列入區塊範圍內 */
+    box-sizing: border-box;
+    /* 格線配置 */
+    display: grid;
+    /* 設定各欄位寬度 */
+    grid-template-columns: 30% 40% 30%;
+    font-size: 22px;
+    padding: 5px;
+    /*上邊界  */
+    border-top: 1px solid #FFFFFF;
+    cursor: pointer;
+    /* 漸變動畫 */
+    animation-name: show;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    color: #FFFFFF;
+    /* 正常來說基準點都是左上角，使用此指令後會變成中間，旋轉也會以中間回基準 */
+    transform-origin: center;
+    /* 溢出的字隱藏 */
+    overflow: hidden;
+}
+
+.set_result {
+    width: 580px;
+    /* 以inline的方式呈現，但同時擁有block的屬性 */
+    display: inline-block;
+}
+
+#split_place {
+    max-height: 500px;
+    /* 預設使用卷軸 */
+    overflow: auto;
+}
+
+#split_place,
+#split_place * {
+    -webkit-app-region: no-drag
+}
+
+button {
+    cursor: pointer;
+    position: relative;
+    /* 邊界也算入height width */
+    box-sizing: border-box;
+    width: 120px;
+    height: 60px;
+    /* 字體白色 */
+    color: #FFFFFF;
+    font-size: 30px;
+    -webkit-app-region: no-drag;
+    /* 如果其他元素超出邊界就不顯示 */
+    overflow: hidden;
+    /* 設定按鈕的圖層 */
+    z-index: 1;
+    border-radius: 50px;
+    background-color: #00000000;
+    border: 1px solid #FFFFFF;
+}
+
+/* 每個button都有 */
+button::after,
+button::before {
+    z-index: -1;
+    /* after、before都沒有內文字 */
+    content: '';
+    /* 不再跟著排版流動 */
+    position: absolute;
+}
+
+button:hover {
+    color: #000000;
+}
+
+#start {
+    width: 120px;
+    height: 60px;
+    overflow: hidden;
+}
+
+@keyframes left_show {
+    0% {
+        transform: translate(-100%, -50%);
+    }
+
+    100% {
+        transform: translate(0%, -50%);
+    }
+}
+
+#start::before,
+#start::after {
+    position: absolute;
+    transform: translate(-100%, -50%);
+    top: 50%;
+    left: 0%;
+    width: 120px;
+    height: 60px;
+    box-sizing: border-box;
+    /* transform以中間為圓心旋轉 */
+    transform-origin: center;
+}
+
+#start:hover::before {
+    animation: left_show;
+    animation-duration: 0.5s;
+    background-color: #FFFFFFAA;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+#start:hover::after {
+    animation: left_show;
+    animation-duration: 0.6s;
+    background-color: #FFFFFF;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+}
+
+#start:hover {
+    transition: 0.7s;
+}
+
+#split:hover {
+    transition: 2s;
+}
+
+#split::before,
+#split::after {
+    transition: 0.8s;
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background-color: #FFFFFF;
+    transform: translateY(-50%) scale(1);
+    top: 50%;
+    animation-duration: 0.8s;
+    /* none：預設值，不論動畫播放次數，結束後一律返回原始狀態
+    forwards：動畫結束後，保持在最後一個影格狀態
+    backwards：動畫結束後，保持在第一個影格狀態 ( 但實際測試和 none 效果一樣 )
+    both：依據動畫的次數或播放方向，保持在第一個影格或最後一個影格狀態 */
+    animation-fill-mode: forwards;
+}
+
+/* 動畫飛入的左圓 */
+#split::before {
+    left: -20px
+}
+
+/* 動畫飛入的右圓 */
+#split::after {
+    left: calc(100% + 20px)
+}
+
+#split:hover::before {
+    animation-name: run_left
+}
+
+#split:hover::after {
+    animation-name: run_right
+}
+
+@keyframes run_left {
+    0% {
+        left: -20px
+    }
+
+    50% {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        left: 50%;
+        transform: translate(-50%, -50%) scale(10, 10);
+    }
+}
+
+@keyframes run_right {
+    0% {
+        left: calc(100% + 20px)
+    }
+
+    50% {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        left: 50%;
+        transform: translate(-50%, -50%) scale(10, 10);
+    }
+}
+
+#reset {
+    transition: 0.4s;
+    border: 1px solid #FFFFFF;
+    overflow: unset;
+}
+
+#reset::before {
+    transition: .4s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 60px;
+    border: 1px solid #FFFFFF;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+
+#reset::after {
+    transition-duration: 0.8s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    width: 120px;
+    height: 60px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color: #FFFFFF;
+    opacity: 0;
+}
+
+#reset:hover::before {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+#reset:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
